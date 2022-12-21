@@ -91,7 +91,7 @@ class ItemController extends Controller
 
         $item->update($validated);
         $request->session()->flash('success', "Successfully updating {$validated['nama']}.");
-        return redirect()->route('authors.show', $author->id);
+        return redirect()->route('authors.show', $item->id);
     }
 
     /**
@@ -103,6 +103,6 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         $item->delete();
-        return redirect()->route('items.index')->with('success', "Successfully deleting {$author['nama']}!");
+        return redirect()->route('items.index')->with('success', "Successfully deleting {$item['nama']}!");
     }
 }
