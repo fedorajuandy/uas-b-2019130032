@@ -14,7 +14,13 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->id();
+            /* numbers */
+            $table->char("item_id", 16)->primary();
+            $table->string('nama');
+            /* >= 0 */
+            $table->decimal('harga', 10, 2);
+            /* >= 0 */
+            $table->integer('stok');
             $table->timestamps();
         });
     }

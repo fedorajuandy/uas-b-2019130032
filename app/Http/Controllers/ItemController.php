@@ -14,7 +14,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::all();
+        return view('items.index', compact('items'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('items.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'id' => 'required|min:16|max:16',
+            'nama' => 'required|max:255',
+            'harga' => 'required|numeric|min:0',
+            'stok' => 'required|integer|min:0',
+        ]);
+
+        Item::create($validateData);
+
+        $request->session()->flash('success', 'Successfully adding new data!');
+        return redirect()->route('items.index');
     }
 
     /**
@@ -46,7 +57,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        return view('items.show', compact('item'));
     }
 
     /**
@@ -57,7 +68,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('items.edit', compact("item"));
     }
 
     /**
@@ -69,7 +80,18 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        //
+        $rules = [
+            'id' => 'required|min:16|max:16',
+            'nama' => 'required|max:255',
+            'harga' => 'required|numeric|min:0',
+            'stok' => 'required|integer|min:0',
+        ];
+
+        $validated = $request->validate($rules);
+
+        $item->update($validated);
+        $request->session()->flash('success', "Successfully updating {$validated['nama']}.");
+        return redirect()->route('authors.show', $author->id);
     }
 
     /**
@@ -80,6 +102,7 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
+        return redirect()->route('items.index')->with('success', "Successfully deleting {$author['nama']}!");
     }
 }
