@@ -14,12 +14,11 @@ class CreateOrderItemTable extends Migration
     public function up()
     {
         Schema::create('order_item', function (Blueprint $table) {
-            $table->integer("order_id");
+            $table->foreignId("order_id")->references('id')->on('orders')->onDelete('cascade');
             $table->char("item_id", 16);
             /* >= 1 */
             $table->integer('quantity');
 
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }

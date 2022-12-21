@@ -15,7 +15,7 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             /* numbers */
-            $table->char("item_id", 16)->primary();
+            $table->char("id", 16)->primary();
             $table->string('nama');
             /* >= 0 */
             $table->decimal('harga', 10, 2);

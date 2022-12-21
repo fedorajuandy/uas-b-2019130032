@@ -1,0 +1,133 @@
+/* reliable restaurant color palette */
+.color-bistre {
+    color: #362417;
+}
+.bg-bistre {
+    background-color: #362417 !important;
+}
+
+.color-cinereous {
+    color: #92817A;
+}
+.bg-cinereous {
+    background-color: #92817A;
+}
+
+.color-dutchwhite {
+    color: #F1DABF;
+}
+.bg-dutchwhite {
+    background-color: #F1DABF;
+}
+
+.color-white {
+    color: #FFFBFF;
+}
+.bg-white {
+    background-color: #FFFBFF;
+}
+
+.color-richblack {
+    color: #04030f;
+}
+.bg-richblack {
+    background-color: #04030f;
+}
+
+/* others */
+.card-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 240px;
+}
+
+.bg-index {
+    position: relative;
+}
+.bg-index:before {
+    background-image: url("https://source.unsplash.com/poI7DelFiVA/1600x900");
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-size: cover;
+}
+
+.bg-about {
+    position: relative;
+}
+.bg-about:before {
+    background-image: url("https://source.unsplash.com/_RAnrRJv-7I/1600x900");
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-size: cover;
+}
+
+.bg-products {
+    position: relative;
+}
+.bg-products:before {
+    background-image: url("https://source.unsplash.com/dsT5LGzEuzE/1600x900");
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-size: cover;
+}
+
+.bg-testimonials {
+    position: relative;
+}
+.bg-testimonials:before {
+    background-image: url("https://source.unsplash.com/Orz90t6o0e4/1600x900");
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-size: cover;
+}
+
+.content {
+    position: relative;
+}
+
+/* Bootstrap modifications */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: #FFFBFF;
+}
+.navbar-custom .navbar-nav .nav-link {
+    color: #FFFBFF;
+}
+.navbar-custom .active,
+.navbar-custom .nav-link:focus,
+.navbar-custom .nav-link:hover {
+    color: #F1DABF !important;
+}
+
+.navbar-custom .navbar-toggler {
+    color: #F1DABF !important;
+    border-color: #F1DABF !important;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #F1DABF;
+}
+.nav-tabs .nav-link {
+    color: #F1DABF;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    border-color: #F1DABF #F1DABF #F1DABF;
+}
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #362417;
+    background-color: #F1DABF;
+    border-color: #F1DABF #F1DABF #F1DABF;
+}

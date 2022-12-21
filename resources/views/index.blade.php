@@ -1,3 +1,8 @@
-{{-- navigasi halaman utama, item, order --}}
+@extends('layout.master')
 
-{{-- informasi angka total data item dan akngka total data order --}}
+@section('title', 'Home')
+
+@section('content')
+{{-- item count --}}
+{{-- order count --}}
+@endsection
