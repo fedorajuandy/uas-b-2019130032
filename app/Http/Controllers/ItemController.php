@@ -111,7 +111,7 @@ class ItemController extends Controller
 
         $item->update($validated);
         $request->session()->flash('success', "Successfully updating {$validated['nama']}.");
-        return redirect()->route('authors.show', $item->id);
+        return redirect()->route('items.show', $item->id);
     }
 
     /**
