@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,26 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('items.create');
+        $random_id = random_int(1000000000000000, 9999999999999999);
+        $x = 0;
+
+        $duplicates = DB::table('items')->select('id')->get();
+        $existing = DB::table('items')
+            ->select(DB::raw('COUNT(*) AS count'))
+            ->first();
+        $counter = $existing->count;
+
+        foreach ($duplicates as &$duplicate) {
+            while ($x <= $counter) {
+                if ($duplicate->id == $random_id) {
+                    $random_id = random_int(1000000000000000, 9999999999999999);
+                } else {
+                    $x++;
+                }
+            }
+        }
+
+        return view('items.create', compact('random_id'));
     }
 
     /**
