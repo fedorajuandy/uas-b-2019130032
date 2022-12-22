@@ -8,6 +8,7 @@
         <link rel="shortcut icon" href="{{ asset('img/logo.svg?v=').time() }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css?v=').time() }}">
+        @stack('svg_after')
         @stack('css_after')
     </head>
 
