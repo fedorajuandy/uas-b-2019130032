@@ -11,16 +11,21 @@ class OrderController extends Controller
 {
     public function order()
     {
-        return view('order');
+        $items = Item::where('stok', '>', '0')->get();
+
+        return view('order', compact('items'));
     }
 
-    public function createOrder(Request $request)
+    public function createOrder(Request $request, $item_id)
     {
         $validateData = $request->validate([
             'status' => 'required|max:32',
         ]);
 
         Order::create($validateData);
+
+        $order = Order::orderByDesc('id')->first();
+        $order->items()->syncWithoutDetaching(Item::find($item_id));
 
         $request->session()->flash('success', 'Successfully creating new order.');
         return redirect()->route('index');
