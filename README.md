@@ -2,6 +2,9 @@
 
 2019130032 - Fedora Yoshe Juandy
 
+> css is modified
+> "harga" format is not specified
+
 ## References
 
 ### Codes
