@@ -11,4 +11,9 @@ class Item extends Model
     protected $guarded = [];
     protected $primaryKey = 'id';
     public $incrementing = false;
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'order_item');
+    }
 }

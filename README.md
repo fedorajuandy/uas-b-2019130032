@@ -18,6 +18,7 @@
 - [Right align an item in a card with Bootstrap 4](https://stackoverflow.com/questions/33596896/aligning-button-to-the-right-of-a-card-using-bootstrap-v4)
 - [Eloquent ORM multiple joins](https://www.tutsmake.com/laravel-eloquent-join-2-tables-example/)
 - [Number format](https://www.w3schools.com/php/func_string_number_format.asp)
+- [Many to many](https://santrikoding.com/tutorial-laravel-eloquent-relationships-5-many-to-many)
 
 ### Designs
 
