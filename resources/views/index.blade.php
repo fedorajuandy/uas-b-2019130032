@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-<h1 class="display-5 mt-4 mb-3">Overview</h1>
+<h2 class="mt-4 mb-3">Overview</h2>
 <div class="d-flex">
     <div class="card bg-info mr-3" style="width: 18rem;">
         <div class="card-body">
