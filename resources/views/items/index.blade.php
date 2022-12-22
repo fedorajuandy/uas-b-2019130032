@@ -40,8 +40,8 @@
                 <tr>
                     <th>Id</th>
                     <th>Nama</th>
-                    <th>Harga</th>
-                    <th>Stok</th>
+                    <th class="text-right">Harga</th>
+                    <th class="text-right">Stok</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -50,8 +50,8 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->nama }}</td>
-                    <td>{{ $item->harga }}</td>
-                    <td>{{ $item->stok }}</td>
+                    <td class="text-right">{{ number_format($item->harga, 2, ".", ",") }}</td>
+                    <td class="text-right">{{ $item->stok }}</td>
                     <td>
                         <a href="{{ route('items.show', $item->id)  }}" type="button" class="btn btn-sm btn-info">
                             <span class="text-light">View</span>
