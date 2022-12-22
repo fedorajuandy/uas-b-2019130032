@@ -4,6 +4,7 @@
 
 > css is modified
 > "harga" currency format is not specified; but using US number formatting
+> Bahasa campur aduk
 
 ## References
 

@@ -9,4 +9,9 @@ class Order extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function items()
+    {
+        return $this->hasMany('\App\Models\Item');
+    }
 }

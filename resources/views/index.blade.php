@@ -16,7 +16,7 @@
         <div class="card-body">
             <p class="card-title">Order count</p>
             <h3 class="card-text text-light">{{ $order_count }}</h4>
-            <a href="{{ route('items.index') }}" class="btn btn-primary mt-3 float-right">View All Orders</a>
+            <a href="{{ route('orders.index') }}" class="btn btn-primary mt-3 float-right">View All Orders</a>
         </div>
     </div>
 </div>

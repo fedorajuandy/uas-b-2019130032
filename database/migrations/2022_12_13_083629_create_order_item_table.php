@@ -20,6 +20,7 @@ class CreateOrderItemTable extends Migration
             $table->integer('quantity');
 
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->unique(['order_id', 'item_id']);
         });
     }
 
