@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Item;
+
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -32,9 +34,15 @@ class OrderController extends Controller
 
     public function details(Order $order)
     {
-        $details = DB::table('order_item')
-            ->where('order_id', $order->order_id)
-            ->get();
-        return view('details', compact('details'));
+        $details = Order::join('order_item', 'orders.id', '=', 'order_item.order_id')
+            ->join('items', 'order_item.item_id', '=', 'items.id')
+            ->get(['order_item.item_id', 'order_item.quantity', 'items.nama', 'items.harga']);
+
+        $total = 0;
+        foreach ($details as &$detail) {
+            $total += $detail->quantity * $detail->harga;
+        }
+
+        return view('details', compact('order', 'details', 'total'));
     }
 }
