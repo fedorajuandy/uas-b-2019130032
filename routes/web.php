@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AuthorController::class, 'index']);
+Route::get('/', [AppController::class,'index'])->name('index');
+
 Route::resource('items', ItemController::class);
 
-/* /order -> function 'order' "OrderController" untuk menampilkan view "order" */
-/* /order -> function 'createOrder' "OrderController" untuk menjalankan fungsi pembuatan pesanan item */
-Route::get('/order', [OrderController::class,'order']);
-Route::post('/order', [OrderController::class,'createOrder']);
+Route::prefix('/order')->group(function () {
+    Route::get('/create', [OrderController::class, 'order'])->name('orders.create');
+    Route::post('/', [OrderController::class, 'createOrder'])->name('orders.store');
+    Route::get('/', [OrderController::class, 'list'])->name('orders.index');
+    Route::get('/{order}', [OrderController::class,'details'])->name('orders.details');
+});
