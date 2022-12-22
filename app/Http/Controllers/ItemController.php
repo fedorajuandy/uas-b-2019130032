@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\Item;
+
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -29,11 +29,8 @@ class ItemController extends Controller
         $random_id = random_int(1000000000000000, 9999999999999999);
         $x = 0;
 
-        $duplicates = DB::table('items')->select('id')->get();
-        $existing = DB::table('items')
-            ->select(DB::raw('COUNT(*) AS count'))
-            ->first();
-        $counter = $existing->count;
+        $duplicates = Item::select('id')->get();
+        $counter = Item::all()->count();
 
         foreach ($duplicates as &$duplicate) {
             while ($x <= $counter) {
