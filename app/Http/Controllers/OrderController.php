@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function order()
     {
-        $orders = Order::all();
-        return view('order', compact('orders'));
+        return view('order');
     }
 
     public function createOrder(Request $request)
@@ -21,7 +20,21 @@ class OrderController extends Controller
 
         Order::create($validateData);
 
-        $request->session()->flash('success', 'Successfully adding new data!');
+        $request->session()->flash('success', 'Successfully creating new order.');
         return redirect()->route('index');
+    }
+
+    public function list()
+    {
+        $orders = Order::all();
+        return view('list', compact('orders'));
+    }
+
+    public function details(Order $order)
+    {
+        $details = DB::table('order_item')
+            ->where('order_id', $order->order_id)
+            ->get();
+        return view('details', compact('details'));
     }
 }

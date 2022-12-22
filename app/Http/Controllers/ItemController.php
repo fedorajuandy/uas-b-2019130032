@@ -45,7 +45,7 @@ class ItemController extends Controller
 
         Item::create($validateData);
 
-        $request->session()->flash('success', 'Successfully adding new data!');
+        $request->session()->flash('success', 'Successfully adding new item!');
         return redirect()->route('items.index');
     }
 
@@ -103,6 +103,6 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         $item->delete();
-        return redirect()->route('items.index')->with('success', "Successfully deleting {$item['nama']}!");
+        return redirect()->route('items.index')->with('success', "Successfully deleting {$item['nama']}.");
     }
 }
