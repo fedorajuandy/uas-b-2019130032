@@ -61,7 +61,7 @@
                     <div class="d-flex align-items-end">
                         <div class="col-md-8 col-sm-8 mb-3">
                             <label for="id">Item</label>
-                            <select class="custom-select form-control @error('id') is-invalid @enderror nama" name="id" id="id" value="{{ old('id') }}">
+                            <select class="custom-select form-control @error('id') is-invalid @enderror nama" name="id" id="id" value="{{ old('id') }}" onclick="viewTotal()">
                                 <option value="option_select" disabled selected>Select item</option>
                                 @foreach($items as $item)
                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
@@ -100,7 +100,7 @@
             <div class="d-flex align-items-end">
                 <div class="col-md-6 col-sm-6 mb-3">
                     <label for="id">Item</label>
-                    <select class="custom-select form-control @error('id') is-invalid @enderror nama" name="id" id="id" value="{{ old('id') }}">
+                    <select class="custom-select form-control @error('id') is-invalid @enderror nama" name="id" id="id" value="{{ old('id') }}" onclick="viewTotal()">
                         <option value="option_select" disabled selected>Select item</option>
                         @foreach($items as $item)
                             <option value="{{ $item->id }}">{{ $item->nama }}</option>
@@ -118,7 +118,7 @@
                     @enderror
                 </div>
                 <div class="col-md-4 col-sm-3 mb-3">
-                    <button class="btn btn-danger btn-block remove" type="button">Remove</button>
+                    <button class="btn btn-danger btn-block remove" type="button" onclick="viewTotal()">Remove</button>
                 </div>
             </div>
         </div>
@@ -126,8 +126,24 @@
 </div>
 @endsection
 
+<div class="modal fade" id="no-stok" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="noStokInfo" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="noStokInfo">Warning!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                There is no enough stok.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @push('js_after')
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
       $(".add-more").click(function(){
@@ -182,7 +198,14 @@
                 y = rows[i].getElementsByTagName("TD")[0];
 
                 if (y.innerHTML == nama_field[j].value) {
-                    sum += Number(rows[i].getElementsByTagName("TD")[2].innerHTML) * quantities[j]
+                    stok_akhir = Number(rows[i].getElementsByTagName("TD")[3].innerHTML) - quantities[j]
+
+                    if (stok_akhir < 0) {
+                        $('#no-stok').modal('show')
+                        console.log(q[i].value)
+                    } else {
+                        sum += Number(rows[i].getElementsByTagName("TD")[2].innerHTML) * quantities[j]
+                    }
                 }
             }
         }

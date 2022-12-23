@@ -20,6 +20,7 @@
 - [Number format](https://www.w3schools.com/php/func_string_number_format.asp)
 - [Many to many](https://santrikoding.com/tutorial-laravel-eloquent-relationships-5-many-to-many)
 - [To add sum with js](https://stackoverflow.com/questions/63268710/automatic-sum-field-in-javascript)
+- [To show modal with condition](https://stackoverflow.com/questions/58722217/open-bootstrap-modal-when-condition-is-true)
 ### Designs
 
 - [UI/UX](https://dribbble.com/tags/crud)

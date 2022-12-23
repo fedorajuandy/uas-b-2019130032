@@ -16,7 +16,7 @@ class OrderController extends Controller
         return view('order', compact('items'));
     }
 
-    public function createOrder(Request $request, $item_id)
+    public function createOrder(Request $request)
     {
         $validateData = $request->validate([
             'status' => 'required|max:32',
@@ -25,7 +25,7 @@ class OrderController extends Controller
         Order::create($validateData);
 
         $order = Order::orderByDesc('id')->first();
-        $order->items()->syncWithoutDetaching(Item::find($item_id));
+        $order->items()->syncWithoutDetaching(Item::find("item_id"));
 
         $request->session()->flash('success', 'Successfully creating new order.');
         return redirect()->route('index');
