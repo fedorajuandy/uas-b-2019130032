@@ -50,7 +50,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td align="center" colspan="6">No itmes.</td>
+                    <td align="center" colspan="6">No items.</td>
                 </tr>
             @endforelse
             </tbody>
