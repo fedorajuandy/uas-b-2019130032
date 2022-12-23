@@ -21,14 +21,19 @@ class OrderController extends Controller
         $validateData = $request->validate([
             'status' => 'required|max:32',
         ]);
-
         Order::create($validateData);
 
+        $ids = $request->get('.nama');
+        debug_to_console($ids);
+        $quantities = $request->get('.quantity');
+        debug_to_console($quantities);
+
         $order = Order::orderByDesc('id')->first();
-        $order->items()->syncWithoutDetaching(Item::find("item_id"));
+        Order::find($order)->items()->sync($ids);
+        // update stok--
 
         $request->session()->flash('success', 'Successfully creating new order.');
-        return redirect()->route('index');
+        // return redirect()->route('index');
     }
 
     public function list()

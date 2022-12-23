@@ -61,7 +61,7 @@
                     <div class="d-flex align-items-end">
                         <div class="col-md-8 col-sm-8 mb-3">
                             <label for="id">Item</label>
-                            <select class="custom-select form-control @error('id') is-invalid @enderror nama" name="id" id="id" value="{{ old('id') }}" onclick="viewTotal()">
+                            <select class="custom-select form-control @error('id') is-invalid @enderror nama" name="id[]" id="id" value="{{ old('id') }}" onclick="viewTotal()">
                                 <option value="option_select" disabled selected>Select item</option>
                                 @foreach($items as $item)
                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="col-md-8 col-sm-6 mb-3">
                             <label for="title">Quantity</label>
-                            <input type="number" class="form-control @error('quantity') is-invalid @enderror quantity" name="quantity" id="quantity" value="{{ old('quantity') }}" oninput="viewTotal()">
+                            <input type="number" class="form-control @error('quantity') is-invalid @enderror quantity" name="quantity[]" id="quantity" value="{{ old('quantity') }}" min="1" oninput="viewTotal()">
                             @error('quantity')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -100,7 +100,7 @@
             <div class="d-flex align-items-end">
                 <div class="col-md-6 col-sm-6 mb-3">
                     <label for="id">Item</label>
-                    <select class="custom-select form-control @error('id') is-invalid @enderror nama" name="id" id="id" value="{{ old('id') }}" onclick="viewTotal()">
+                    <select class="custom-select form-control @error('id') is-invalid @enderror nama" name="id[]" id="id" value="{{ old('id') }}" onclick="viewTotal()">
                         <option value="option_select" disabled selected>Select item</option>
                         @foreach($items as $item)
                             <option value="{{ $item->id }}">{{ $item->nama }}</option>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="col-md-6 col-sm-5 mb-3">
                     <label for="title">Quantity</label>
-                    <input type="number" class="form-control @error('quantity') is-invalid @enderror quantity" name="quantity" id="quantity" value="{{ old('quantity') }}" oninput="viewTotal()">
+                    <input type="number" class="form-control @error('quantity') is-invalid @enderror quantity" name="quantity[]" id="quantity" value="{{ old('quantity') }}" min="1" oninput="viewTotal()">
                     @error('quantity')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
