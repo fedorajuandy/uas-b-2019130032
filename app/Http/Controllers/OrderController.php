@@ -16,24 +16,50 @@ class OrderController extends Controller
         return view('order', compact('items'));
     }
 
+    // 1. Details not working; I do not know how to get those class names properly ;-;
+    // 2. Update, same with number 1
+    // 3. These are all... trials, and mostly errors TTATT
     public function createOrder(Request $request)
     {
-        $validateData = $request->validate([
-            'status' => 'required|max:32',
-        ]);
-        Order::create($validateData);
+        // GET DATAS
+        // https://stackoverflow.com/questions/58078757/class-illuminate-support-facades-input-not-found
+        $inputs = $request->all();
 
         $ids = $request->get('.nama');
-        debug_to_console($ids);
         $quantities = $request->get('.quantity');
-        debug_to_console($quantities);
 
-        $order = Order::orderByDesc('id')->first();
-        Order::find($order)->items()->sync($ids);
-        // update stok--
+        // MAKE ORDER
+        $order = new Order;
+        $order->status = $request->get('status');;
+        $order->save();
 
+        // ATTACH ITEMS AND INSERT QUANTITY
+        /* $items = Item::find($ids);
+        foreach ($ids as &$id) {
+            $order->items()->attach($id);
+        } */
+
+        /* $c = count(Request::get('nama'));
+
+        $id = Request::get('nama');
+        $q = Request::get('quantity');
+
+        for ($i = 0; $i < $c; ++$i) {
+            $order->items()->attach($id[$i], $q[$i]);
+        } */
+
+        // UPDATE STOK
+        // https://stackoverflow.com/questions/26355913/inserting-multiple-data-laravel-4
+        /* foreach ($order->items as $item) {
+            $i = 0;
+            $book->pivot->quantity = $quantities[$i];
+            $book->push();
+            $i++;
+        } */
+
+        // REDIRECT
         $request->session()->flash('success', 'Successfully creating new order.');
-        // return redirect()->route('index');
+        return redirect()->route('index');
     }
 
     public function list()
