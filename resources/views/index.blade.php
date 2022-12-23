@@ -9,7 +9,7 @@
         <div class="card-body">
             <p class="card-title">Item count</p>
             <h3 class="card-text text-light">{{ $item_count }}</h4>
-            <a href="{{ route('items.index') }}" class="btn btn-primary mt-3 float-right">View All Users</a>
+            <a href="{{ route('items.index') }}" class="btn btn-primary mt-3 float-right">View All Items</a>
         </div>
     </div>
     <div class="card bg-info mr-3" style="width: 18rem;">
