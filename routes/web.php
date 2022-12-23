@@ -21,8 +21,8 @@ Route::get('/', [AppController::class,'index'])->name('index');
 Route::resource('items', ItemController::class);
 
 Route::prefix('/order')->group(function () {
-    Route::get('/create', [OrderController::class, 'order'])->name('orders.create');
+    Route::get('/', [OrderController::class, 'order'])->name('orders.create');
     Route::post('/', [OrderController::class, 'createOrder'])->name('orders.store');
-    Route::get('/', [OrderController::class, 'list'])->name('orders.index');
+    Route::get('/index', [OrderController::class, 'list'])->name('orders.index');
     Route::get('/{order}', [OrderController::class,'details'])->name('orders.details');
 });
